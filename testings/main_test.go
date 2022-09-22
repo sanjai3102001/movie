@@ -1,10 +1,11 @@
-package main
+package testings
 
 import (
 	"fmt"
 	function "go-postgres/functions"
 	"log"
 	"net/http"
+	"testing"
 
 	"github.com/gorilla/mux"
 	"github.com/jinzhu/gorm"
@@ -35,7 +36,7 @@ const (
 	dbname   = "postgres"
 )
 
-func InitialMigration() {
+func InitialMigration() int {
 	//router := mux.NewRouter()
 	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+"password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
 	db, err = gorm.Open("postgres", psqlInfo)
@@ -47,6 +48,7 @@ func InitialMigration() {
 	for index := range drivers {
 		db.Create(&drivers[index])
 	}
+	return 0
 }
 
 func initializeRouter() int {
@@ -62,7 +64,14 @@ func initializeRouter() int {
 	return 0
 }
 
-func main() {
-	InitialMigration()
+func TestInitializeRouter(t *testing.T) {
+	expectedoutput := 0
+	// output := initializeRouter()
+	output := InitialMigration()
 	initializeRouter()
+	if expectedoutput != output {
+		t.Errorf("Failed ! got %v want %c", output, expectedoutput)
+	} else {
+		t.Logf("Success !")
+	}
 }
