@@ -17,7 +17,7 @@ type movie struct {
 }
 
 // this is a Getmovies function
-func Getmovies(w http.ResponseWriter, r *http.Request) {
+func Pullm(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	var movies []movie
 	db.Find(&movies)
