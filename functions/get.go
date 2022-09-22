@@ -16,8 +16,8 @@ type movie struct {
 	Isactive  bool   `json:"Isactive"`
 }
 
-//this is a get function
-func Getmovie(w http.ResponseWriter, r *http.Request) {
+// this is a Getmovies function
+func Getmovies(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	var movies []movie
 	db.Find(&movies)
