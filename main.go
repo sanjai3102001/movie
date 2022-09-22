@@ -52,7 +52,7 @@ func InitialMigration() {
 func initializeRouter() {
 
 	r := mux.NewRouter()
-	r.HandleFunc("/", function.Pullm).Methods("GET")
+	// r.HandleFunc("/", function.Pullm).Methods("GET")
 	r.HandleFunc("/movie", function.Createmovie).Methods("POST")
 	r.HandleFunc("/movie/{id}", function.Updatemovie).Methods("PUT")
 	r.HandleFunc("/movie/{id}", function.Softdelete).Methods("DELETE")
