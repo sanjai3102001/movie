@@ -41,7 +41,8 @@ func InitialMigration() int {
 	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+"password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
 	db, err = gorm.Open("postgres", psqlInfo)
 	if err != nil {
-		panic("failed to connect database")
+		// panic("failed to connect database")
+		panic("0")
 
 	}
 	db.AutoMigrate(&movie{})
@@ -51,7 +52,7 @@ func InitialMigration() int {
 	return 0
 }
 
-func initializeRouter() int {
+func initializeRouter() string {
 
 	r := mux.NewRouter()
 	// r.HandleFunc("/", function.Pullm).Methods("GET")
@@ -61,7 +62,7 @@ func initializeRouter() int {
 
 	log.Fatal(http.ListenAndServe("Localhost:5000", r))
 
-	return 0
+	return "panic: failed to connect database"
 }
 
 func TestInitializeRouter(t *testing.T) {

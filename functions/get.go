@@ -17,13 +17,12 @@ type movie struct {
 }
 
 // this is a Getmovies function
-//
-//	func (w http.ResponseWriter, r *http.Request) {
-//		w.Header().Set("Content-Type", "application/json")
-//		var movies []movie
-//		db.Find(&movies)
-//		json.NewEncoder(w).Encode(movies)
-//	}
+func Pullm(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	var movies []movie
+	db.Find(&movies)
+	json.NewEncoder(w).Encode(movies)
+}
 func Getmovieid(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	var movies []movie
