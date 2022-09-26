@@ -1,4 +1,5 @@
-package testings
+// package testings
+package main
 
 import (
 	"fmt"
